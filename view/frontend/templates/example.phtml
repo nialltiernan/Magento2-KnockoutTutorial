@@ -1,3 +1,8 @@
+<?php
+/* @var \Niall\KnockoutTutorial\ViewModel\Block $viewModel */
+$viewModel = $block->getData('viewModel') ;
+?>
+
 <h1>Knockout</h1>
 <div data-bind="scope: 'knockoutExampleScope'">
     <p>First name: <strong data-bind="text: firstName"></strong></p>
@@ -17,7 +22,9 @@
         "Magento_Ui/js/core/app": {
             "components": {
                 "knockoutExampleScope": {
-                    "component": "Niall_KnockoutTutorial/js/view/example"
+                    "component": "Niall_KnockoutTutorial/js/view/example",
+                    "firstName": "<?= $viewModel->getFirstName() ?>",
+                    "lastName": "<?= $viewModel->getLastName() ?>"
                 }
             }
         }

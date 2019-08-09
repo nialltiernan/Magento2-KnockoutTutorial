@@ -6,10 +6,9 @@ define([
     return Component.extend({
 
         initialize() {
-            // console.log('initialize()');
             this._super();
-            this.firstName = ko.observable("John");
-            this.lastName = ko.observable("Doe");
+            this.firstName = ko.observable(this.firstName);
+            this.lastName = ko.observable(this.lastName);
         },
 
         capitalizeLastName() {

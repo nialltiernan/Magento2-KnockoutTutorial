@@ -5,14 +5,14 @@ define([
     'use strict';
     return Component.extend({
 
-        initialize: function () {
+        initialize() {
             // console.log('initialize()');
             this._super();
             this.firstName = ko.observable("John");
             this.lastName = ko.observable("Doe");
         },
 
-        capitalizeLastName: function () {
+        capitalizeLastName() {
             this.lastName(this.lastName().toUpperCase());
         }
     });

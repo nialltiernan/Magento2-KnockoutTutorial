@@ -1,10 +1,10 @@
 <?php
-/* @var \Niall\KnockoutTutorial\ViewModel\Block $viewModel */
+/* @var \Niall\KnockoutTutorial\ViewModel\Block1 $viewModel */
 $viewModel = $block->getData('viewModel') ;
 ?>
 
 <h1>Knockout</h1>
-<div data-bind="scope: 'knockoutExampleScope'">
+<div data-bind="scope: 'knockoutExampleScope'", style="border: 1px solid red">
     <p>First name: <strong data-bind="text: firstName"></strong></p>
     <p>Last name: <strong data-bind="text: lastName"></strong></p>
 
@@ -22,7 +22,7 @@ $viewModel = $block->getData('viewModel') ;
         "Magento_Ui/js/core/app": {
             "components": {
                 "knockoutExampleScope": {
-                    "component": "Niall_KnockoutTutorial/js/view/example",
+                    "component": "Niall_KnockoutTutorial/js/view/tutorial1",
                     "firstName": "<?= $viewModel->getFirstName() ?>",
                     "lastName": "<?= $viewModel->getLastName() ?>"
                 }

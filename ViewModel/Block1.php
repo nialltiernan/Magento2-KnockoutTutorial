@@ -5,7 +5,7 @@ namespace Niall\KnockoutTutorial\ViewModel;
 
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 
-class Block implements ArgumentInterface
+class Block1 implements ArgumentInterface
 {
     public function getFirstName()
     {

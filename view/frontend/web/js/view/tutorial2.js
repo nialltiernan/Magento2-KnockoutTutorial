@@ -32,10 +32,5 @@ define([
         getRandomName() {
             return this.availableNames[Math.floor(Math.random()*this.availableNames.length)]
         },
-
-        getBillingAgreements() {
-            return ['abc', 'def'];
-        },
-
     });
 });

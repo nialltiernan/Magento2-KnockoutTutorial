@@ -3,8 +3,8 @@
 $viewModel = $block->getData('viewModel') ;
 ?>
 
-<h1>Knockout</h1>
-<div data-bind="scope: 'knockoutExampleScope'", style="border: 1px solid red">
+<div data-bind="scope: 'knockoutExample1Scope'", style="border: 1px solid red">
+    <h1>Knockout</h1>
     <p>First name: <strong data-bind="text: firstName"></strong></p>
     <p>Last name: <strong data-bind="text: lastName"></strong></p>
 
@@ -21,7 +21,7 @@ $viewModel = $block->getData('viewModel') ;
     "*": {
         "Magento_Ui/js/core/app": {
             "components": {
-                "knockoutExampleScope": {
+                "knockoutExample1Scope": {
                     "component": "Niall_KnockoutTutorial/js/view/tutorial1",
                     "firstName": "<?= $viewModel->getFirstName() ?>",
                     "lastName": "<?= $viewModel->getLastName() ?>"

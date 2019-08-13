@@ -8,7 +8,8 @@
             <tr>
                 <td><input data-bind="value: name" /></td>
                 <td><select data-bind="options: $parent.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
-                <td data-bind="text: meal().price"></td>
+                <td data-bind="text: formattedPrice"></td>
+                <td><a href="#" data-bind="click: $parent.removeSeat.bind($parent)">Remove</a></td>
             </tr>
         </tbody>
         <tbody></tbody>

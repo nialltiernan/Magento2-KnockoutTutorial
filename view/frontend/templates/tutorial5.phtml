@@ -1,0 +1,31 @@
+<div data-bind="scope: 'knockoutExample5'", style="border: 1px solid black">
+
+    <h1>Loading/saving data</h1>
+
+    <button data-bind="click: save">Save</button>
+
+    <ul data-bind="foreach: tasks, visible: tasks().length > 0">
+        <li>
+            <input type="checkbox" data-bind="checked: isDone" />
+            <input data-bind="value: title, disable: isDone" />
+            <a href="#" data-bind="click: $parent.removeTask">Delete</a>
+        </li>
+    </ul>
+
+    You have <b data-bind="text: incompleteTasks().length">&nbsp;</b> incomplete task(s)
+    <span data-bind="visible: incompleteTasks().length == 0"> - it's beer time!</span>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "knockoutExample5": {
+                    "component": "Niall_KnockoutTutorial/js/view/taskListViewModel"
+                }
+            }
+        }
+    }
+}
+</script>

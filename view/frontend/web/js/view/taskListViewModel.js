@@ -1,57 +1,55 @@
 define([
+    'jquery',
     'uiComponent',
     'ko'
-], function (Component, ko) {
+], function ($, Component, ko) {
     'use strict';
 
     return Component.extend({
 
         defaults: {
-            availableNames: ['Niall', 'Nino', 'Patrick', 'Lennart'],
-            availableMeals: [
-                {mealName: "Standard (sandwich)", price: 0},
-                {mealName: "Premium (lobster)", price: 34.95},
-                {mealName: "Ultimate (whole zebra)", price: 290}
-            ],
+            taskList: [
+                {title: 'Wake up', isDone: true},
+                {title: 'Snooze alarm', isDone: false},
+                {title: 'Eat breakfast', isDone: false},
+                {title: 'Go to work', isDone: false}
+            ]
         },
 
         initialize() {
             this._super();
-            this.seats = ko.observableArray([
-                this.getSeatReservation('Alex', this.availableMeals[0]),
-                this.getSeatReservation('Joe', this.availableMeals[1])
-            ]);
-            this.totalSurcharge = ko.computed(function () {
-                let self = this;
-                let total = 0;
-                for (let i = 0; i < self.seats().length; i++)
-                    total += self.seats()[i].meal().price;
-                console.log(total);
-                return total;
+            this.tasks = ko.observableArray([]);
+            this.newTaskText = ko.observable();
+            this.incompleteTasks = ko.computed(function () {
+                return ko.utils.arrayFilter(this.tasks(), function (task) {
+                    return !task.isDone();
+                })
             }, this);
+            this.loadTasks();
         },
 
-        addSeat() {
-            this.seats.push(this.getSeatReservation(this.getRandomName(), this.availableMeals[0]));
-        },
-
-        removeSeat(seat) {
-            this.seats.remove(seat);
-        },
-
-        getSeatReservation(name, initialMeal) {
+        getNewTask(data) {
             let self = this;
-            self.name = name;
-            self.meal = ko.observable(initialMeal);
-            self.formattedPrice = ko.computed(function () {
-                var price = self.meal().price;
-                return price ? "€" + price.toFixed(2) : "None";
-            });
-            return {name: self.name, meal: self.meal, formattedPrice: self.formattedPrice};
+            self.title = ko.observable(data.title);
+            self.isDone = ko.observable(data.isDone);
+            return { title: self.title, isDone: self.isDone };
         },
 
-        getRandomName() {
-            return this.availableNames[Math.floor(Math.random() * this.availableNames.length)]
+        addTask() {
+            this.tasks.push(this.getNewTask({title: this.newTaskText()}));
+            this.newTaskText('');
         },
+
+        removeTask(task) {
+            this.tasks.remove(task);
+        },
+
+        loadTasks() {
+            let tasks = [];
+            for (let i = 0; i < this.taskList.length; i++) {
+                tasks.push(this.getNewTask(this.taskList[i]))
+            }
+            this.tasks(tasks);
+        }
     });
 });

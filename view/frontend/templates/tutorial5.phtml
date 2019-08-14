@@ -1,14 +1,17 @@
-<div data-bind="scope: 'knockoutExample5'", style="border: 1px solid black">
+<div data-bind="scope: 'knockoutExample5'", style="border: 1px solid blue">
 
     <h1>Loading/saving data</h1>
 
-    <button data-bind="click: save">Save</button>
+    <form data-bind="submit: addTask">
+        Add task: <input data-bind="value: newTaskText" placeholder="What needs to be done?" />
+        <button type="submit">Add</button>
+    </form>
 
     <ul data-bind="foreach: tasks, visible: tasks().length > 0">
         <li>
             <input type="checkbox" data-bind="checked: isDone" />
             <input data-bind="value: title, disable: isDone" />
-            <a href="#" data-bind="click: $parent.removeTask">Delete</a>
+            <a href="#" data-bind="click: $parent.removeTask.bind($parent)">Delete</a>
         </li>
     </ul>
 

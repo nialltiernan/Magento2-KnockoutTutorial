@@ -8,6 +8,7 @@
                 </arguments>
             </block>
             <block name="exampleKnockout2" template="Niall_KnockoutTutorial::tutorial2.phtml" />
+            <block name="exampleKnockout5" template="Niall_KnockoutTutorial::tutorial5.phtml" />
         </referenceContainer>
     </body>
 </page>

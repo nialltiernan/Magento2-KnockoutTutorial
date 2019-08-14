@@ -26,7 +26,6 @@ define([
                 let total = 0;
                 for (let i = 0; i < self.seats().length; i++)
                     total += self.seats()[i].meal().price;
-                console.log(total);
                 return total;
             }, this);
         },

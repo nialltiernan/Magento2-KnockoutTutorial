@@ -7,7 +7,8 @@ define([
     return Component.extend({
 
         defaults: {
-            foo: 'bar'
+            foo: 'bar',
+            isVisible: true
         },
 
         availableNames: ['Niall', 'Nino', 'Patrick', 'Lennart'],
@@ -23,6 +24,14 @@ define([
                 this.getSeatReservation('Alex', this.availableMeals[0]),
                 this.getSeatReservation('Joe', this.availableMeals[1])
             ]);
+            this.totalSurcharge = ko.computed(function () {
+                let self = this;
+                let total = 0;
+                for (let i = 0; i < self.seats().length; i++)
+                    total += self.seats()[i].meal().price;
+                console.log(total);
+                return total;
+            }, this);
         },
 
         addSeat() {

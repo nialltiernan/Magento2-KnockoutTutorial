@@ -1,20 +1,23 @@
 <div data-bind="scope: 'knockoutExample2Scope'", style="border: 1px solid green">
-    <h2>Your seat reservations</h2>
+    <h1>Your seat reservations</h1>
     <table>
-        <thead><tr>
-            <th>Passenger name</th><th>Meal</th><th>Surcharge</th><th></th>
-        </tr></thead>
+        <thead>
+            <tr><th>Passenger name</th><th>Meal</th><th>Surcharge</th><th></th></tr>
+        </thead>
             <tbody data-bind="foreach: seats">
-            <tr>
-                <td><input data-bind="value: name" /></td>
-                <td><select data-bind="options: $parent.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
-                <td data-bind="text: formattedPrice"></td>
-                <td><a href="#" data-bind="click: $parent.removeSeat.bind($parent)">Remove</a></td>
-            </tr>
+                <tr>
+                    <td><input data-bind="value: name" /></td>
+                    <td><select data-bind="options: $parent.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
+                    <td data-bind="text: formattedPrice"></td>
+                    <td><a href="#" data-bind="click: $parent.removeSeat.bind($parent)">Remove</a></td>
+                </tr>
         </tbody>
-        <tbody></tbody>
     </table>
-    <button data-bind="click: addSeat">Reserve another seat</button>
+    <button data-bind="click: addSeat, enable: seats().length < 5">Reserve another seat</button>
+    <h3 data-bind="visible: totalSurcharge() > 0">
+        Total surcharge: €<span data-bind="text: totalSurcharge()"></span>
+    </h3>
+    <h4>Your seat reservations (<span data-bind="text: seats().length"></span>)</h4>
 </div>
 
 <script type="text/x-magento-init">

@@ -7,16 +7,13 @@ define([
     return Component.extend({
 
         defaults: {
-            foo: 'bar',
-            isVisible: true
+            availableNames: ['Niall', 'Nino', 'Patrick', 'Lennart'],
+            availableMeals: [
+                {mealName: "Standard (sandwich)", price: 0},
+                {mealName: "Premium (lobster)", price: 34.95},
+                {mealName: "Ultimate (whole zebra)", price: 290}
+            ],
         },
-
-        availableNames: ['Niall', 'Nino', 'Patrick', 'Lennart'],
-        availableMeals: [
-            {mealName: "Standard (sandwich)", price: 0},
-            {mealName: "Premium (lobster)", price: 34.95},
-            {mealName: "Ultimate (whole zebra)", price: 290}
-        ],
 
         initialize() {
             this._super();

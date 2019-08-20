@@ -41,7 +41,7 @@ define([
         },
 
         removeTask(task) {
-            this.tasks.remove(task);
+            this.tasks.destroy(task);
         },
 
         loadTasks() {
@@ -50,6 +50,17 @@ define([
                 tasks.push(this.getNewTask(this.taskList[i]))
             }
             this.tasks(tasks);
+        },
+
+        save() {
+            $.ajax('#', {
+                data: ko.toJSON({ tasks: this.tasks }),
+                type: "post",
+                contentType: "application/json",
+                success: function(result) {
+                    alert('Save')
+                }
+            })
         }
     });
 });

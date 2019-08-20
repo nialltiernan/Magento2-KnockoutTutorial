@@ -1,5 +1,4 @@
 <div data-bind="scope: 'knockoutExample5'", style="border: 1px solid blue">
-
     <h1>Loading/saving data</h1>
 
     <form data-bind="submit: addTask">
@@ -17,6 +16,8 @@
 
     You have <b data-bind="text: incompleteTasks().length">&nbsp;</b> incomplete task(s)
     <span data-bind="visible: incompleteTasks().length == 0"> - it's beer time!</span>
+
+    <button data-bind="click: save">Save</button>
 </div>
 
 <script type="text/x-magento-init">
